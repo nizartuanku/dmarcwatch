@@ -99,7 +99,7 @@ with the rest of your logs.
 
 This open-source build is the permanent free edition — it has **no license
 activation**. Pro and Team builds are delivered separately:
-https://whop.com/dmarcwatch
+https://whop.com/nizar-tuanku/dmarcwatch?utm_source=github
 
 ## Honest limits
 

@@ -111,4 +111,4 @@ https://whop.com/nizar-tuanku/dmarcwatch?utm_source=github
 
 ## License
 
-Apache-2.0. See [LICENSE](LICENSE).
+Apache-2.0. See [LICENSE.txt](LICENSE.txt).

@@ -113,10 +113,10 @@ func TestParseGzipAndZip(t *testing.T) {
 
 func TestParseRejectsGarbage(t *testing.T) {
 	for name, payload := range map[string][]byte{
-		"not xml":      []byte("hello world"),
-		"wrong xml":    []byte("<html><body>nope</body></html>"),
-		"no records":   []byte(`<feedback><report_metadata><org_name>x</org_name><report_id>1</report_id><date_range><begin>1</begin><end>2</end></date_range></report_metadata><policy_published><domain>example.com</domain><p>none</p></policy_published></feedback>`),
-		"no domain":    []byte(`<feedback><report_metadata><org_name>x</org_name><report_id>1</report_id></report_metadata><policy_published><p>none</p></policy_published></feedback>`),
+		"not xml":    []byte("hello world"),
+		"wrong xml":  []byte("<html><body>nope</body></html>"),
+		"no records": []byte(`<feedback><report_metadata><org_name>x</org_name><report_id>1</report_id><date_range><begin>1</begin><end>2</end></date_range></report_metadata><policy_published><domain>example.com</domain><p>none</p></policy_published></feedback>`),
+		"no domain":  []byte(`<feedback><report_metadata><org_name>x</org_name><report_id>1</report_id></report_metadata><policy_published><p>none</p></policy_published></feedback>`),
 	} {
 		if _, err := ParseFile(name, payload); err == nil {
 			t.Errorf("%s: expected error, got none", name)

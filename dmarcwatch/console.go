@@ -23,8 +23,8 @@ const (
 // summary for the dashboard panel, and the per-source table. Domains
 // themselves are core targets — added and removed through the core target API.
 type Console struct {
-	Store   Store
-	Domains func() []string       // registered domains (canonical), from the scheduler
+	Store    Store
+	Domains  func() []string        // registered domains (canonical), from the scheduler
 	OnIngest func(domains []string) // trigger an immediate rescan after ingest
 }
 

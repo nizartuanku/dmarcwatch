@@ -3,10 +3,10 @@
 // by upload (raw XML, .xml.gz, or .zip) through the console; Collect reads the
 // stored rows and answers the four questions DMARC monitoring exists for:
 //
-//	1. Who is sending mail as this domain — and is anyone spoofing it?
-//	2. Did a new sending source appear that nobody approved?
-//	3. Are we ready to tighten the policy (none → quarantine → reject)?
-//	4. Are reports still flowing at all?
+//  1. Who is sending mail as this domain — and is anyone spoofing it?
+//  2. Did a new sending source appear that nobody approved?
+//  3. Are we ready to tighten the policy (none → quarantine → reject)?
+//  4. Are reports still flowing at all?
 //
 // It is upload-driven and poll-affirmed: ingestion triggers an immediate
 // rescan; the scheduler re-affirms findings and catches the "reports stopped

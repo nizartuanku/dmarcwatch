@@ -170,15 +170,15 @@ func ParseXML(data []byte) (Report, error) {
 	}
 
 	rep := Report{
-		Org:      strings.TrimSpace(fb.Metadata.OrgName),
-		Email:    strings.TrimSpace(fb.Metadata.Email),
-		ReportID: strings.TrimSpace(fb.Metadata.ReportID),
-		Begin:    time.Unix(fb.Metadata.Range.Begin, 0).UTC(),
-		End:      time.Unix(fb.Metadata.Range.End, 0).UTC(),
-		Domain:   domain,
-		Policy:   strings.ToLower(strings.TrimSpace(fb.Policy.P)),
+		Org:       strings.TrimSpace(fb.Metadata.OrgName),
+		Email:     strings.TrimSpace(fb.Metadata.Email),
+		ReportID:  strings.TrimSpace(fb.Metadata.ReportID),
+		Begin:     time.Unix(fb.Metadata.Range.Begin, 0).UTC(),
+		End:       time.Unix(fb.Metadata.Range.End, 0).UTC(),
+		Domain:    domain,
+		Policy:    strings.ToLower(strings.TrimSpace(fb.Policy.P)),
 		SubPolicy: strings.ToLower(strings.TrimSpace(fb.Policy.SP)),
-		Pct:      100,
+		Pct:       100,
 	}
 	if fb.Policy.Pct != nil {
 		rep.Pct = *fb.Policy.Pct

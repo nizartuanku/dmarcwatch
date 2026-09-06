@@ -101,6 +101,8 @@ This open-source build is the permanent free edition — it has **no license
 activation**. Pro and Team builds are delivered separately:
 https://whop.com/nizar-tuanku/dmarcwatch?utm_source=github
 
+**Whop sells paid licences only.** Free: github.com/nizartuanku/dmarcwatch — this repository is the free edition, Apache-2.0, no time limit; nothing on Whop is free, so try it here first.
+
 ## Honest limits
 
 - Ingestion is upload-only in v0 — no IMAP polling yet, no forensic (RUF)

@@ -5,8 +5,8 @@ Single Linux binary, SQLite storage, no external services.
 ## 1. Run it
 
 ```
-tar -xzf dmarcwatch-0.1.0-linux-amd64.tar.gz
-cd dmarcwatch-0.1.0
+sha256sum -c SHA256SUMS
+tar -xzf dmarcwatch-free-0.1.0-linux-amd64.tar.gz
 ./dmarcwatch
 ```
 

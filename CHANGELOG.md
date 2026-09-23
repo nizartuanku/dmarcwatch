@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 0.1.1 — 2026-09-23
 
 - **Verification identifiers renamed to Hexward.** The HTTP header, DNS TXT label and well-known file used to prove domain ownership still carried the pre-rename brand. They are now `X-Hexward-Token`, `_hexward-verify.<domain>` and `/.well-known/hexward-verify.txt`. Nothing already installed breaks: a challenge is satisfied by either the old or the new identifier, and the webhook sends both headers, so a receiver written against the old name keeps working with no change at either end. The old names are removed on **1 March 2027**.
 - **The product page is reachable from inside the product.** When a free-edition limit is reached, the message that reports it now also says where the paid editions are; the dashboard carries the same link in the Licence panel and the footer. It is a product URL, not a plan id, so it keeps working when plans change. No banner, no modal, no countdown.

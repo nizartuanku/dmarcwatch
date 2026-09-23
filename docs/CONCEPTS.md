@@ -112,10 +112,10 @@ answer to whether it is safe to tighten yet, and an alarm if the reports themsel
 ## Try it on one domain
 
 ```
-curl -LO https://github.com/nizartuanku/dmarcwatch/releases/latest/download/dmarcwatch-free-0.1.0-linux-amd64.tar.gz
+curl -LO https://github.com/nizartuanku/dmarcwatch/releases/latest/download/dmarcwatch-free-0.1.1-linux-amd64.tar.gz
 curl -LO https://github.com/nizartuanku/dmarcwatch/releases/latest/download/SHA256SUMS
 sha256sum -c SHA256SUMS
-tar xzf dmarcwatch-free-0.1.0-linux-amd64.tar.gz
+tar xzf dmarcwatch-free-0.1.1-linux-amd64.tar.gz
 ./dmarcwatch
 ```
 

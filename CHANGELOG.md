@@ -1,5 +1,17 @@
 # Changelog
 
+## Unreleased
+
+- **AI Assist (optional): an ✨ Explain button on every finding.** When DmarcWatch is started
+  with `-ai-assist-url`, a local [hexward-ai](https://github.com/nizartuanku/hexward-ai) sidecar
+  explains a finding in plain language and lists what to verify. The engine remains the only
+  source of findings and severity. Only one sanitised finding is sent (secret-like evidence keys
+  are dropped). Any AI failure shows a quiet note and changes nothing. Free edition: a sidecar on
+  the same host. Pro/Team: also a dedicated AI host or your own endpoint
+  (`-ai-assist-key-file`). English or Bahasa Indonesia (`-ai-assist-lang`). New endpoints
+  `GET /api/ai` and `POST /api/findings/explain`, covered by tests for: AI off, bad config,
+  sanitising, tier gating, sidecar down, and bad requests.
+
 ## 0.1.1 — 2026-09-23
 
 - **Verification identifiers renamed to Hexward.** The HTTP header, DNS TXT label and well-known file used to prove domain ownership still carried the pre-rename brand. They are now `X-Hexward-Token`, `_hexward-verify.<domain>` and `/.well-known/hexward-verify.txt`. Nothing already installed breaks: a challenge is satisfied by either the old or the new identifier, and the webhook sends both headers, so a receiver written against the old name keeps working with no change at either end. The old names are removed on **1 March 2027**.

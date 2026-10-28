@@ -103,6 +103,48 @@ https://whop.com/nizar-tuanku/dmarcwatch?utm_source=github
 
 **Whop sells paid licences only.** Free: github.com/nizartuanku/dmarcwatch — this repository is the free edition, Apache-2.0, no time limit; nothing on Whop is free, so try it here first.
 
+## Send findings to your SIEM (Wazuh, Splunk, Elastic)
+
+Every finding DmarcWatch opens or resolves can leave as one
+[Hexward Finding Schema](https://github.com/nizartuanku/hexward-core/blob/main/SCHEMA.md)
+event (`hexward.finding/1`), the same shape every Hexward tool emits. Write a
+SIEM rule once and it covers the whole line. **Available in every edition,
+Free included.**
+
+```bash
+# NDJSON file for a Wazuh agent, Splunk Universal Forwarder or Elastic Agent
+dmarcwatch -export-file /var/log/hexward/dmarcwatch.ndjson
+
+# Splunk HTTP Event Collector (token read from a file, never a flag)
+dmarcwatch -hec-url https://splunk.example:8088 -hec-token-file /etc/hexward/hec.token
+
+# Syslog as HFS JSON or CEF, RFC 5424 by default, over udp, tcp or tls
+dmarcwatch -syslog wazuh.example:5514 -syslog-format json -syslog-network tcp
+dmarcwatch -syslog siem.example:6514 -syslog-format cef -syslog-network tls -syslog-ca-file ca.pem
+
+# Webhook with the same events, authenticated with a shared secret
+dmarcwatch -webhook https://hooks.example/hexward -webhook-format v2 -webhook-secret-file secret.txt
+```
+
+Ready-made content: [hexward-wazuh](https://github.com/nizartuanku/hexward-wazuh)
+(decoder and rules, tested on Wazuh 4.14.9) and
+[TA-hexward](https://github.com/nizartuanku/TA-hexward) (Splunk add-on).
+
+| Flag | Default | Meaning |
+|---|---|---|
+| `-export-file` | off | Append HFS NDJSON to this file |
+| `-hec-url`, `-hec-token-file`, `-hec-index`, `-hec-ca-file` | off | Splunk HEC; sourcetype `hexward:finding` |
+| `-syslog-format` | `kv` | `kv` (original key=value line), `json` (HFS) or `cef` |
+| `-syslog-network` | `udp` | `udp`, `tcp`, or `tls` (json/cef only; certificates are always verified) |
+| `-syslog-rfc` | `5424` | Header for json/cef: `5424` or `3164` |
+| `-webhook-format` | `v1` | `v1` (original digest) or `v2` (HFS events) |
+| `-webhook-secret-file` | off | Shared secret sent as `X-Hexward-Token` (v1 and v2) |
+| `-export-evidence` | `redacted` | `redacted` drops secret-like evidence keys; `none` sends no evidence |
+
+Live export carries changes (`opened`, `resolved`). To load what already
+exists, pull a snapshot once:
+`curl -s http://127.0.0.1:8429/api/findings/export`.
+
 ## AI Assist (optional)
 
 DmarcWatch can explain a finding in plain language with a small language model that runs on

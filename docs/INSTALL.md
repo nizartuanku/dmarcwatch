@@ -6,7 +6,7 @@ Single Linux binary, SQLite storage, no external services.
 
 ```
 sha256sum -c SHA256SUMS
-tar -xzf dmarcwatch-free-0.1.3-linux-amd64.tar.gz
+tar -xzf dmarcwatch-free-0.1.4-linux-amd64.tar.gz
 ./dmarcwatch
 ```
 
